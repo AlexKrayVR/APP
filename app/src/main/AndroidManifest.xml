@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.alex.vr_party_app">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_vr_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_vr_icon_round"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".editor.dj.DJsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".editor.PartyEditorActivity"
+            android:windowSoftInputMode="adjustPan"
+
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".gallery.GalleryGridPicturesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".schedule.PartyByDaySchedule"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".reg_log.RecoveryPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".gallery.Gallery"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".community.CommunityPartyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".info.InfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".reg_log.WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".gallery.AddPictureActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".user.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".chat.ChatActivity"
+            android:screenOrientation="portrait" /> <!-- android:windowSoftInputMode="adjustNothing" -->
+        <activity
+            android:name=".reg_log.RegisterActivity"
+            android:screenOrientation="portrait">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".reg_log.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".schedule.PartySchedule"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" /> <!-- android:windowSoftInputMode="adjustUnspecified|stateUnspecified" -->
+        <service
+            android:name=".notification.FcmMessageService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_chat_24_new" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/cardview_dark_background" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

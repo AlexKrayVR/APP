@@ -1,0 +1,189 @@
+<resources>
+    <string name="app_name">VR PARTY</string>
+
+    <!--PartyByDaySchedule activity -->
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="schedule">Schedule</string>
+
+
+    <!--Info Activity-->
+    <string name="main_information">This application should help people navigate among a variety of VR parties. </string>
+    <string name="p_s">P.S. For all questions, any bugs - \n
+        <a href="https://discord.com/users/381254686189158406">Discord: AlexKray#8324</a> </string>
+    <string name="p_p_s">P.P.S. Additional options will be supplemented over time. </string>
+    <string name="information_main_title">Information</string>
+    <string name="info">Info</string>
+
+    <!-- PartyEditorActivity-->
+    <string name="partyEditor">Party editor</string>
+    <string name="partyEditorHintTime">time</string>
+    <string name="partyEditorChooseTime">Choose time</string>
+    <string name="partyEditorChooseDay">Choose party day</string>
+    <string name="partyEditorApply">Apply</string>
+    <string name="partyEditorAddDJ">Add a DJ</string>
+    <string name="partyEditorDJsList">DJs list</string>
+    <string name="partyEditorPartyCommunity">Party Community</string>
+    <string name="partyEditorHintNumberOfHours">hours</string>
+    <string name="partyEditorName">name</string>
+    <string name="partyEditorCancel">Cancel</string>
+    <string name="partyEditorOk">Ok</string>
+    <string name="partyEditorHintDate">date</string>
+    <string name="partyEditorChooseDate">Choose date</string>
+    <string name="partyEditorChooseCorrectDate">Choose correct date</string>
+    <string name="partyEditorNumberOfHours">Number of DJ hours</string>
+    <string name="partyEditorDjsName">Djs name</string>
+    <string name="partyEditorFullNameOfDJ">Fill name of DJ</string>
+    <string name="partyEditorFullHoursOfDJ">Fill hours of DJ</string>
+    <string name="partyEditorAddAtLeastOneDJ">Add at least one DJ</string>
+
+    <string-array name="daysOfWeek">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
+    <string-array name="partyCommunity">
+        <item>DDVR</item>
+        <item>MVP</item>
+        <item>Rizumu</item>
+        <item>Just Party</item>
+        <item>Groovr Events</item>
+        <item>Interconnection</item>
+        <item>Addiction</item>
+        <item>Loli Squad</item>
+    </string-array>
+
+
+    <string name="invite_link">Invite\nlink</string>
+
+    <string name="title_table_settings">Table Settings</string>
+
+    <!--registr activity text-->
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="username">Username</string>
+    <string name="signUpSuccess">Registration successful!</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="error_register">Registration error!"</string>
+
+
+    <!--bottom navigation-->
+    <string name="clubs_bottom_nav">Clubs</string>
+    <string name="chat_bottom_nav">Chat</string>
+    <string name="main_bottom_nav">Main</string>
+    <string name="gallery_bottom_nav">Gallery</string>
+
+
+    <!--login activity text-->
+    <string name="forgotPassword">Forgot Password?</string>
+    <string name="textPasswordHelper">at least 6 characters are required</string>
+
+    <!--chat activity text-->
+    <string name="hintChatMessage">Message</string>
+    <string name="chat">Chat</string>
+
+    <!--DJsActivity Activity-->
+    <string name="djsActivitySearch">Search</string>
+
+
+    <!--Add Picture Activity-->
+    <string name="upload">Upload</string>
+    <string name="uploadInProgress">Upload in progress</string>
+    <string name="noFileSelected">No file selected</string>
+    <string name="uploadSuccessful">Upload successful</string>
+    <string name="UploadTo">Upload to</string>
+    <string name="choose_picture">Press here\n to choose picture</string>
+
+
+    <!--Community Party Activity-->
+    <string name="communities">Communities</string>
+    <string name="discordLink">Discord link</string>
+
+
+    <!--welcome activity text-->
+    <string name="login">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="motto">Beyond\nYour\nImagination</string>
+
+    <!--gallery activity text-->
+    <string name="RandomPhotos">Random Photos</string>
+    <string name="UsersPhotos">Users Photos</string>
+    <string name="GroupPhotos">Group Photos</string>
+
+    <!--recover activity text-->
+    <string name="CheckYourEmailForPasswordChanged">Сheck your Email for password change.</string>
+    <string name="ErrorChangePassword">Error change password.</string>
+    <string name="PasswordRecovery">Password Recover</string>
+
+    <!--login activity text-->
+    <string name="loginTitle">Login</string>
+    <string name="emailIsRequired">Email is Required.</string>
+    <string name="passwordIsRequired">Password is Required.</string>
+    <string name="emailIsWrong">Email is wrong.</string>
+    <string name="passwordMoreThen6Characters">Password must be more then 6 characters.</string>
+
+    <!--main activity text-->
+    <string name="Info">Info</string>
+    <string name="Schedule">Schedule</string>
+    <string name="Pictures">Pictures</string>
+    <string name="Gallery">Gallery</string>
+    <string name="Clubs">Clubs</string>
+    <string name="Settings">Settings</string>
+    <string name="Chat">Chat</string>
+    <string name="Profile">Profile</string>
+    <string name="Reserve">Reserve</string>
+    <string name="Community">Community</string>
+    <string name="Tips">Tips</string>
+
+
+    <!--settings activity text-->
+    <string name="setTableTime">Set the table time</string>
+
+
+    <string name="NoPartiesAnnounced">"No parties announced"</string>
+    <string name="announcement">-</string>
+
+
+    <string name="status_code_sent">Code Sent</string>
+    <string name="status_verification_failed">Verification failed</string>
+    <string name="status_verification_succeeded">Verification succeeded</string>
+    <string name="status_sign_in_failed">Sign-in failed</string>
+    <string name="instant_validation">(instant validation)</string>
+    <string name="sign_in">Sign In</string>
+    <string name="create_account">Create Account</string>
+    <string name="send_link">Send Link</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="firebase_status_fmt">Firebase UID: %s</string>
+    <string name="firebase_user_management">Firebase User Management</string>
+    <string name="signed_in">Signed In</string>
+    <string name="signed_out">Signed Out</string>
+
+    <string name="default_notification_channel_id">fcm_default_channel</string>
+    <string name="default_notification_channel_name">Constructor</string>
+    <string name="title_activity_test_acctivity">TestAcctivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "268214752194",
+    "firebase_url": "https://vrparty-c8f41.firebaseio.com",
+    "project_id": "vrparty-c8f41",
+    "storage_bucket": "vrparty-c8f41.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:268214752194:android:3e25fb3f5a8b69044fbc5b",
+        "android_client_info": {
+          "package_name": "com.alex.vr_party_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "268214752194-6g1p3nh6cbcsrc0fve99iuvgai4jcktl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alex.vr_party_app",
+            "certificate_hash": "f915bebd003c7f349bcd606cc23a61e8b8fd2fb6"
+          }
+        },
+        {
+          "client_id": "268214752194-qaeq2ark341vm11t118aq3q5b8maahoi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjjo2AIzmkAkxlyP-sCIuhAebsXwJbrc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "268214752194-qaeq2ark341vm11t118aq3q5b8maahoi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
