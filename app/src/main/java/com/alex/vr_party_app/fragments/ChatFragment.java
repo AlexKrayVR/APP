@@ -27,8 +27,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import hani.momanii.supernova_emoji_library.Actions.EmojIconActions;
 
@@ -52,17 +57,16 @@ public class ChatFragment extends Fragment {
 
     Toolbar toolbar;
 
+    SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
 
     public ChatFragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentChatBinding.inflate(inflater, container, false);
-
         binding.listMessages.setLayoutManager(new LinearLayoutManager(getContext()));
         mChatAdapter = new ChatAdapter(getContext(), chat);
         binding.listMessages.setAdapter(mChatAdapter);
@@ -110,34 +114,28 @@ public class ChatFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-        binding.sendMessage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String message = binding.messageField.getText().toString();
-                if (!message.equals("")) {
-                    sendMessage(userName, message, userId, imageURL);
-                }
-                binding.messageField.setText("");
+        binding.sendMessage.setOnClickListener(v -> {
+            String message = binding.messageField.getText().toString();
+            if (!message.equals("")) {
+                int differentTIME = TimeZone.getDefault().getRawOffset()/1000; //in seconds
+                Calendar calendar = GregorianCalendar.getInstance();
+                calendar.add(Calendar.SECOND, -differentTIME);
+                sendMessage(userName, message, userId, imageURL, timeFormat.format(calendar.getTime()));
             }
+            binding.messageField.setText("");
         });
     }
 
-
-
-
-    private void sendMessage(String userName, String message, String userID, String mImageURL) {
+    private void sendMessage(String userName, String message, String userID, String mImageURL, String date) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
         HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("username", userName);
+        hashMap.put("userName", userName);
         hashMap.put("message", message);
-        hashMap.put("userid", userID);
+        hashMap.put("userID", userID);
         hashMap.put("imageURL", mImageURL);
+        hashMap.put("date", date);
         reference.child("Chats").push().setValue(hashMap);
     }
-
-
-
-
 
     private void readMessages() {
         reference = FirebaseDatabase.getInstance().getReference("Chats");
@@ -171,10 +169,11 @@ public class ChatFragment extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Chat message = dataSnapshot.getValue(Chat.class);
-//                Log.d("AlexDebug", "getMessage: " + chat.getMessage());
-//                Log.d("AlexDebug", "getUserid: " + chat.getUserid());
-//                Log.d("AlexDebug", "getUsername: " + chat.getUsername());
-//                Log.d("AlexDebug", "getImageURL: " + chat.getImageURL());
+                Log.d("AlexDebug", "getMessage: " + message.getMessage());
+                Log.d("AlexDebug", "getUserid: " + message.getUserID());
+                Log.d("AlexDebug", "getUsername: " + message.getUserName());
+                Log.d("AlexDebug", "getImageURL: " + message.getImageURL());
+                Log.d("AlexDebug", "getDate: " + message.getDate());
                 chat.add(message);
 
                 mChatAdapter.notifyDataSetChanged();
@@ -198,8 +197,5 @@ public class ChatFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
-
     }
-
 }

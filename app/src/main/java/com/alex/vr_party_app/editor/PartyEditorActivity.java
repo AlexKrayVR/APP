@@ -86,17 +86,13 @@ public class PartyEditorActivity extends AppCompatActivity {
         fillRecycler();
 
         setAdminSettings();
-
-
     }
 
     private void binding() {
         bindingSpinnerDay();
         bindingTimePickers();
         bindingAddDj();
-        binding.deleteAll.setOnClickListener(v -> {
-            getDocumentForDelete();
-        });
+        binding.deleteAll.setOnClickListener(v -> getDocumentForDelete());
         binding.searchDJ.setOnClickListener(v -> {
             Intent intent = new Intent(PartyEditorActivity.this, DJsActivity.class);
             intent.putParcelableArrayListExtra("djs", djsFullList);
@@ -142,8 +138,6 @@ public class PartyEditorActivity extends AppCompatActivity {
 
 
     private void sendToServer() {
-
-
         if (binding.timeHolder.getText().toString().isEmpty()) {
             Toast.makeText(this, getText(R.string.partyEditorChooseTime), Toast.LENGTH_SHORT).show();
             return;

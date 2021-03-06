@@ -88,7 +88,7 @@ public class ProfileActivity extends AppCompatActivity {
                     //binding.profileImage.setImageResource(R.drawable.candy);
                     //Picasso.get().load(R.drawable.ic_menu_pictures).into(binding.profileImage);
                 } else {
-                    Picasso.get().load(user.getImageURL()).into(binding.profileImage);
+                    Picasso.get().load(user.getImageURL()).into(binding.userImage);
                 }
             }
 

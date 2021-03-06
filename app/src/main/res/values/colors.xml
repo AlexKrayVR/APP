@@ -4,7 +4,6 @@
     <color name="colorPrimaryDark">#200B28</color>
     <color name="colorAccent">#DB2588</color>
 
-
     <color name="colorText">#DE000000</color>
     <color name="colorIcons">#037AD5</color>
 
@@ -14,16 +13,14 @@
     <color name="colorLight">#2B91FF</color>
     <color name="colorLightDesign">#1976d2</color>
 
-
     <color name="colorHintMessage">#fafafa</color>
     <color name="colorChat">#004ba0</color>
 
     <color name="colorMessage">#37214E</color>
 
-    <color name="colorChatUserName">#B9B3B3</color>
+    <color name="colorChatGray">#B9B3B3</color>
 
     <color name="toolbarColor2">#200A28</color>
-
 
     <!-- reg_log -->
     <color name="toolbarBack">#4C1156</color>
@@ -33,7 +30,6 @@
     <!--CommunityPartyActivity-->
     <color name="communityNameLink">#DB2588</color>
 
-
     <color name="menuTextColor">#DB2588</color>
 
     <color name="menuStrokeColor">#6B1AA9</color>
@@ -41,9 +37,4 @@
     <color name="white">#FFFFFF</color>
 
     <color name="resultOfPasswordChanged">#5CEF38</color>
-
-
-
-
-
 </resources>

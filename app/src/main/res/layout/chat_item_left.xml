@@ -9,8 +9,21 @@
     android:layout_marginBottom="4dp"
     android:gravity="left|center_vertical|end">
 
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        android:text="date"
+        android:textColor="@color/colorChatGray"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profileImage"
+        android:id="@+id/userImage"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/candy"
@@ -18,42 +31,47 @@
         app:civ_border_color="#037AD5"
         app:civ_border_width="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayout5" />
 
     <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/profileImage"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toEndOf="@+id/userImage"
+        app:layout_constraintTop_toBottomOf="@+id/date">
 
         <TextView
-            android:id="@+id/user_name"
+            android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
             android:fontFamily="@font/voces"
+            android:includeFontPadding="false"
             android:singleLine="true"
-            android:text="Alex"
-            android:textColor="@color/colorChatUserName"
+            android:text="name"
+            android:textColor="@color/colorChatGray"
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/show_message"
+            android:id="@+id/userMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:background="@drawable/chat_message_left"
             android:fontFamily="@font/voces"
             android:gravity="center_vertical"
-            android:paddingStart="12dp"
+            android:includeFontPadding="false"
+            android:paddingStart="10dp"
             android:paddingTop="6dp"
-            android:paddingEnd="12dp"
+            android:paddingEnd="10dp"
             android:paddingBottom="6dp"
             android:text="text"
-            android:textColor="#FFFFFF"
-            android:textSize="14sp" />
+            android:textColor="@color/white"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

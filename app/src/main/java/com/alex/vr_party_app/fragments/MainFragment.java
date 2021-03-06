@@ -49,6 +49,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
 
@@ -91,7 +92,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                 if (user == null || user.getImageURL().equals("default")) {
                     //Picasso.get().load(R.drawable.candy).resize(200, 200).centerCrop().into(binding.profileImage);
                 } else {
-                    Picasso.get().load(user.getImageURL()).resize(200, 200).centerCrop().into(binding.profileImage);
+                    Picasso.get().load(user.getImageURL()).resize(200, 200).centerCrop().into(binding.userImage);
                 }
             }
 
@@ -145,26 +146,18 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
     }
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentMainBinding.inflate(inflater, container, false);
 
-        binding.info.setOnClickListener(v -> {
-            startActivity(new Intent(getContext(), InfoActivity.class));
-        });
+        binding.info.setOnClickListener(v -> startActivity(new Intent(getContext(), InfoActivity.class)));
 
-        binding.settings.setOnClickListener(v -> {
-            startActivity(new Intent(getContext(), SettingsActivity.class));
-        });
+        binding.settings.setOnClickListener(v -> startActivity(new Intent(getContext(), SettingsActivity.class)));
 
-        binding.profileImage.setOnClickListener(v -> {
-            startActivity(new Intent(getContext(), ProfileActivity.class));
-        });
+        binding.userImage.setOnClickListener(v -> startActivity(new Intent(getContext(), ProfileActivity.class)));
 
         //editor
         binding.editor.setOnClickListener(v -> {
@@ -175,7 +168,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
         return binding.getRoot();
     }
-
 
     private void fillListLinearLayoutIcons() {
         listLinearLayoutIcons = new ArrayList<>(Arrays.asList(
@@ -253,7 +245,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         } else {
             printedDate.set(Calendar.DAY_OF_MONTH, printedDate.get(Calendar.DAY_OF_MONTH) - printedDate.get(Calendar.DAY_OF_WEEK) + 2);
         }
-        DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
+        DateFormat df = new SimpleDateFormat("dd.MM.yyyy", Locale.ENGLISH);
         Calendar currentDate = GregorianCalendar.getInstance();
         for (int i = 0; i < 7; i++) {
             if (currentDate.get(Calendar.DAY_OF_MONTH) == printedDate.get(Calendar.DAY_OF_MONTH)) {
@@ -261,7 +253,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             }
             Log.d("AlexDebug", "DAY_OF_MONTH:" + i + " " + printedDate.get(Calendar.DAY_OF_MONTH));
             Log.d("AlexDebug", "DAY_OF_WEEK:" + i + " " + printedDate.get(Calendar.DAY_OF_WEEK));
-            listTextView.get(i).setText(dayOfWeeks[i] + " " + df.format(printedDate.getTime()));
+            listTextView.get(i).setText(String.format("%s %s", dayOfWeeks[i], df.format(printedDate.getTime())));
             printedDate.set(Calendar.HOUR, 24);
         }
     }

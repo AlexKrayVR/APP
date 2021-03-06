@@ -74,7 +74,6 @@ public class ChatActivity extends AppCompatActivity {
             public void onKeyboardOpen() {
                 Log.d("AlexDebug", "open");
                 binding.listMessages.scrollToPosition(mChat.size()-1);
-
             }
 
             @Override

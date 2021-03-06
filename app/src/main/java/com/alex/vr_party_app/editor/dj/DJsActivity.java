@@ -96,5 +96,4 @@ public class DJsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

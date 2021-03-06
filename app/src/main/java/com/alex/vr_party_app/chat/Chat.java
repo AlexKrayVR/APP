@@ -2,26 +2,26 @@ package com.alex.vr_party_app.chat;
 
 public class Chat {
 
-    private String username;
+    private String userName;
     private String message;
-    private String userid;
+    private String userID;
     private String imageURL;
     private String date;
 
-    public Chat(String username, String message, String userid, String imageURL,String date) {
-        this.username = username;
+    public Chat(String userName, String message, String userID, String imageURL, String date) {
+        this.userName = userName;
         this.message = message;
-        this.userid = userid;
+        this.userID = userID;
         this.imageURL = imageURL;
         this.date = date;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getMessage() {
@@ -32,12 +32,12 @@ public class Chat {
         this.message = message;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getImageURL() {
@@ -58,5 +58,16 @@ public class Chat {
     }
 
     public Chat() {
+    }
+
+    @Override
+    public String toString() {
+        return "Chat{" +
+                "userName='" + userName + '\'' +
+                ", message='" + message + '\'' +
+                ", userID='" + userID + '\'' +
+                ", imageURL='" + imageURL + '\'' +
+                ", date='" + date + '\'' +
+                '}';
     }
 }

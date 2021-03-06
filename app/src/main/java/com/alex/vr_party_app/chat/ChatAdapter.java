@@ -15,7 +15,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.TimeZone;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -25,35 +32,34 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     private static final int MSG_TYPE_RIGHT = 1;
     private static final int MSG_TYPE_LEFT_R = 2;
     private static final int MSG_TYPE_RIGHT_R = 3;
-    private ArrayList<Chat> mChat = new ArrayList<>();
+    private ArrayList<Chat> chat;
     LayoutInflater inflater;
     private Context context;
-    private String mImageURL;
-    FirebaseUser mUser;
+    private String imageURL;
+    FirebaseUser user;
+    SimpleDateFormat timeFormatDisplay = new SimpleDateFormat("HH:mm MMMM dd ", Locale.ENGLISH);
+    SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
 
-    private static boolean left = false;
-    private static boolean right = false;
-    private static String previous = "";
+    //private static boolean left = false;
+    //private static boolean right = false;
+    //private static String previous = "";
 
-    public ChatAdapter(Context context, ArrayList<Chat> mChat) {
-        this.mChat = mChat;
+    public ChatAdapter(Context context, ArrayList<Chat> chat) {
+        this.chat = chat;
         this.context = context;
-        mUser = FirebaseAuth.getInstance().getCurrentUser();
-        Log.d("AlexDebug", "constructor");
-
+        user = FirebaseAuth.getInstance().getCurrentUser();
     }
 
     @NonNull
     @Override
     public ChatAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.d("AlexDebug", "viewType: " + viewType);
-
         if (viewType == MSG_TYPE_RIGHT) {
             View v = LayoutInflater.from(context).inflate(R.layout.chat_item_right, parent, false);
-            return new ChatAdapter.ViewHolder(v);
-        } else  {
+            return new ViewHolder(v);
+        } else {
             View v = LayoutInflater.from(context).inflate(R.layout.chat_item_left, parent, false);
-            return new ChatAdapter.ViewHolder(v);
+            return new ViewHolder(v);
         }
 //         else if (viewType == MSG_TYPE_RIGHT_R) {
 //            View v = LayoutInflater.from(context).inflate(R.layout.chat_item_right_repeat, parent, false);
@@ -64,62 +70,61 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 //        }
     }
 
-
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Chat chat = this.chat.get(position);
+        Log.d("AlexDebug", "chat: " + chat.toString());
+        holder.userMessage.setText(chat.getMessage());
+        holder.userName.setText(chat.getUserName());
 
+        String date = chat.getDate();
+        Calendar calendar = GregorianCalendar.getInstance();
+        try {
+            calendar.setTime(Objects.requireNonNull(timeFormat.parse(date)));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        int differentTIME = TimeZone.getDefault().getRawOffset() / 1000; //in seconds
+        calendar.add(Calendar.SECOND, differentTIME);
+        holder.date.setText(timeFormatDisplay.format(calendar.getTime()));
 
-        Chat chat = mChat.get(position);
-        Log.d("AlexDebug", "message: " + chat.getMessage());
-
-
-        holder.show_message.setText(chat.getMessage());
-        holder.user_name.setText(chat.getUsername());
-        //Log.d("AlexDebug", "mImageURL: " + mImageURL);
-        //holder.show_message.setText(chat.getMessage());
-        mImageURL = chat.getImageURL();
-        //Log.d("AlexDebug", "Bind mImageURL: " + mImageURL);
-        if (mImageURL.equals("default")) {
-            holder.profile_image.setImageResource(R.drawable.candy);
+        imageURL = chat.getImageURL();
+        if (imageURL.equals("default")) {
+            holder.userImage.setImageResource(R.drawable.candy);
         } else {
-            Picasso.get().load(mImageURL).into(holder.profile_image);
+            Picasso.get().load(imageURL).resize(200, 0).centerCrop().into(holder.userImage);
         }
     }
 
     @Override
     public int getItemCount() {
-        return mChat.size();
+        return chat.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView show_message, user_name;
-        public CircleImageView profile_image;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView userMessage, userName, date;
+        public CircleImageView userImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            show_message = itemView.findViewById(R.id.show_message);
-            profile_image = itemView.findViewById(R.id.profileImage);
-            user_name = itemView.findViewById(R.id.user_name);
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                }
-//            });
+            userMessage = itemView.findViewById(R.id.userMessage);
+            userImage = itemView.findViewById(R.id.userImage);
+            userName = itemView.findViewById(R.id.userName);
+            date = itemView.findViewById(R.id.date);
         }
     }
 
     @Override
     public int getItemViewType(int position) {
         //Log.d("AlexDebug", "getUid: " + mUser.getUid().toString());
-        if (mChat.get(position).getUserid().equals(mUser.getUid().toString())) {
+        if (chat.get(position).getUserID().equals(user.getUid())) {
 //            left = false;
 //            previous = "";
 //            if (right) {
 //                return MSG_TYPE_RIGHT_R;
 //            } else {
 //                right = true;
-                return MSG_TYPE_RIGHT;
+            return MSG_TYPE_RIGHT;
             //}
         } else {
 //            right = false;
@@ -132,7 +137,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 //                return MSG_TYPE_LEFT_R;
 //            } else {
 //                left = true;
-                return MSG_TYPE_LEFT;
+            return MSG_TYPE_LEFT;
             //}
         }
         //return super.getItemViewType(position);

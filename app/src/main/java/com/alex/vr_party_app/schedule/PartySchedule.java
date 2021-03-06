@@ -241,7 +241,7 @@ public class PartySchedule extends AppCompatActivity {
     }
 
     private void getOffset() {
-        int arrayDateTime[][] = new int[partyClassTreeSet.size()][3];
+        int[][] arrayDateTime = new int[partyClassTreeSet.size()][3];
         Iterator<PartyClass> itDateTime = partyClassTreeSet.iterator();
         for (int i = 0; i < partyClassTreeSet.size(); i++) {
             PartyClass temp = itDateTime.next();
@@ -368,7 +368,6 @@ public class PartySchedule extends AppCompatActivity {
         Log.d("AlexDebug", "DHM: " + DHM.toString());
         return listTimes;
     }
-
 
     /**
      * @param lenghtOfParty
